@@ -4,7 +4,6 @@ Basic Beginning =
 3. health_facilities_data = JSON.parse(%q ``some symbol``
     data json file
     ``symbol``)
-
 Accessing json data set =
 Go into "data" portion of json data file
 Find borough within data set
