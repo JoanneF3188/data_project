@@ -1,8 +1,11 @@
+# Resources
 # https://data.cityofnewyork.us/Health/New-York-City-Farmers-Markets/j8gx-kc43
 # https://data.cityofnewyork.us/api/views/j8gx-kc43/rows.json?accessType=DOWNLOAD
 # http://codebeautify.org/jsonviewer
 
-require 'json'
+require 'json' #takes json data structure and turns into Ruby code
+
+#Beginning of data structure and set JSON data structure to equal "farmers_market_data"
 farmers_market_data = JSON.parse(%q|
 {
 	"meta": {
@@ -2583,31 +2586,32 @@ farmers_market_data = JSON.parse(%q|
 		]
 	]
 }
-|)
+|) #End of data structure
 
-no_market_message = "Sorry, there are no farmers markets in this borough."
-farmers_market_names = ""
-
+# Finds farmers markets, given data structure and borough
 def markets_by_borough(farmers_market,borough)
-  market_names = []
-  farmers_market["data"].each do |market|
-    if market[11] == borough
-      market_names << market[8]
-    end
-  end
-  return market_names
-end
-
-def run(farmers_market)
-  puts "What borough do you want to look for a farmers market in?"
-  user_borough = gets.chomp.capitalize
+	no_market_message = "Sorry, there are no farmers markets in this borough." #Sets a message, in case the code can't find a list of Farmer's Markets
+	market_names = [] #Sets empty hash to add list of markets into
+	
+	farmers_market["data"].each do |market| #Goes through each of the market informations
+		if market[11] == borough # Looks for the borough that was given
+			market_names << market[8] #Found the market name and pushes market name into the empty array
+    	end
+	end #Repeats back to first step of going through each of the market information
   
-  farmers_market_names = markets_by_borough(farmers_market,user_borough)
-  if farmers_market_names == ""
-    no_market_message
-  else
-    puts farmers_market_names
-  end
+    if market_names == []
+    	return no_market_message
+    else
+	    return market_names #Returns back a list of ALL of the farmer's markets
+	end
 end
 
-run(farmers_market_data)
+# Runs all methods and finds list of markets
+def run(farmers_market)
+  puts "What borough do you want to look for a farmers market in?" #Asks for an input of a borough
+  user_borough = gets.chomp.capitalize #Sets new variable, "user_borough" to the given input and capitalizes input
+  
+  markets_by_borough(farmers_market,user_borough) #Runs set method with the "farmers_market" given data set and given user_borough
+end
+
+run(farmers_market_data) #Runs entire code, given "farmers_market_data" data set
