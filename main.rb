@@ -1,7 +1,7 @@
 # Resources
-# https://data.cityofnewyork.us/Health/New-York-City-Farmers-Markets/j8gx-kc43
-# https://data.cityofnewyork.us/api/views/j8gx-kc43/rows.json?accessType=DOWNLOAD
-# http://codebeautify.org/jsonviewer
+# https://data.cityofnewyork.us/Health/New-York-City-Farmers-Markets/j8gx-kc43 *Data shown in NYC Open Data*
+# https://data.cityofnewyork.us/api/views/j8gx-kc43/rows.json?accessType=DOWNLOAD *Data as JSON data*
+# http://codebeautify.org/jsonviewer *JSON beautifier*
 
 require 'json' #takes json data structure and turns into Ruby code
 
